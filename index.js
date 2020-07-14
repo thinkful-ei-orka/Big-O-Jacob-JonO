@@ -179,4 +179,175 @@ function isWhat(n) {
 //Answer:  O(n).
 
 
+function towerOfHanoi(
+    depth,
+    source = 0,
+    temp = 1,
+    dest = 2,
+    status = [Array.from(Array(depth), (_, i) => depth - i), [], []]
+) {
+    if (depth === 1) {
+        console.log(`Moved ${source} to ${dest}`);
+        status[dest].push(status[source].pop());
+        console.log(status);
+    }
+    towerOfHanoi(depth - 1, source, temp, dest, status)
+    towerOfHanoi(1, source, dest, temp, status)
+    towerOfHanoi(depth - 1, temp, dest, source, status)
+}
 
+// 3 disks: 7
+// 4 disks: 15
+// 5 disks: 31
+// Big O: O(2^n)
+
+// 12.1
+function countingSheep(sheep) {
+    let message = ''
+    for (let i = sheep; i <= sheep && i >= 0 ; i--) {
+        if (i === 0) {
+            message += 'All sheep jumped over the fence'
+        }else{
+            message += `${i}: Another sheep jumps over the fence `
+        }
+    }
+    return message
+}
+// BigO: O(n)
+
+// 12.2
+function powerCalculator(base, power) {
+    let num = 1
+    for (let i = 1; i <= power; i++) {
+        num *= base
+    }
+    return num
+}
+// BigO: O(n)
+
+// 12.3
+function reverseString(string) {
+    let reverse = ''
+    for (let i = string.length - 1; i <= string.length && i >= 0; i--) {
+        reverse += string[i]
+    }
+    return reverse
+}
+// BigO: O(n)
+
+// 12.4
+function triangleNum(num) {
+    let total = 0
+    for (let i = 1; i <= num; i++) {
+        total += i
+    }
+    return total
+}
+// BigO: O(n)
+
+// 12.5
+function stringSplitter(string, separator) {
+    return string.split(separator)
+}
+// BigO: O(n)
+
+// 12.6
+function fibonacci(num) {
+    let result = [];
+    for (let i = 1; i <= num; i++) {
+
+        if (i === 1) {
+            result.push(0);
+        }
+        else if (i === 2) {
+            result.push(1);
+        }
+        else {
+            result.push(result[i - 2] + result[i - 3]);
+        }
+    }
+    return result;
+}
+// BigO: O(n)
+
+// 12.7
+function factorial(num) {
+    let total = 0
+    for (let i = 1; i <= num; i++) {
+        total *= i
+    }
+    return total
+}
+// BigO: O(n)
+
+// Recursive versions
+function countingSheep(n) {
+    if (n == 0) {
+        return 'All sheep jumped over the fence'
+    }
+    return `${n}: Another sheep jumped over the fence ` + countingSheep(n - 1)
+}
+// O(n)
+
+function powerCalculator(n, m) {
+    if (m == 1) {
+        return n
+    }
+    return n * powerCalculator(n, (m - 1))
+}
+// O(n)
+
+function reverseString(string) {
+    if (string === '') {
+        return ''
+    }
+    const newCharacter = string[0]
+
+    return reverseString(string.slice(1)) + newCharacter
+}
+// O(n)
+
+function triangularNumber(n) {
+    if (n == 1) {
+        return 1
+    }
+    return n + triangularNumber(n - 1)
+}
+// O(n)
+
+function stringSplit(string, seperator) {
+    
+    if (string === '') {
+        return ['']
+    }
+    const newChar = string[0]
+    if (newChar === seperator) {
+        return ['', ...stringSplit(string.slice(1), seperator)]
+    }
+    return [newChar + stringSplit(string.slice(1), seperator)]
+}
+// O(n)
+
+function fibonacci(n) {
+    counter++
+    if (n == 0) {
+        return 0
+    } else if (n == 1) {
+        return 1
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2)
+}
+function fibonacciSequence(n) {
+    for (let i = 1; i <= n; i++) {
+        console.log(fibonacci(i))
+    }
+}
+// O(2^n)
+
+function factorial(n) {
+    if (n == 1) {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+// O(n)
