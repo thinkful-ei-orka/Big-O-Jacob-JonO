@@ -149,3 +149,34 @@ function efficientSearch(array, item) {
 // problem gets cut in half each time through the while loop so the runtime is only slightly increased with larger input
 // Answer: O(log(n))
 
+// 9. Random element
+// What is the Big O of the following algorithm? Explain your answer
+
+function findRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+//The runtime for this function will always be 1 because it only performs one operation, irregardless of the size of the array.
+
+//Answer: O(1).
+
+// 10. What Am I?
+// What does the following algorithm do? What is the Big O of the following algorithm? Explain your answer
+
+function isWhat(n) {
+    if (n < 2 || n % 1 !== 0) {
+        return false;
+    }
+    for (let i = 2; i < n; ++i) {
+        if (n % i === 0) return false;
+    }
+    return true;
+}
+
+//This function is checking whether a number is prime.
+//At best case scenario, the function runs once and we return false on line 168.  Worst case is that we iterate through the entire loop, then return true.  The average case is that we find a divisor in the midpoint between 2 and n.  In this case, the runtime should only increase directly with respect to the size of the number.
+
+//Answer:  O(n).
+
+
+
